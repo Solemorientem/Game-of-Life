@@ -19,8 +19,10 @@ void createVotersGroup(int votersSize, int partySize, int votersGroup[]);
 void convincer(int votersSize, int votersGroup[], int countConvinces);
 void print(int votersSize, int votersGroup[]);
 void statisticProvider(int votersSize, int partySize, int votersGroup[]);
-void clear_screen();
-void pause(const char* prompt);
+#ifdef CONSOLECOMMANDS
+	void clear_screen();
+	void pause(const char* prompt);
+#endif //CONSOLECOMMANDS
 
 int main() {
 
@@ -80,6 +82,7 @@ void createVotersGroup(int votersSize, int partySize, int votersGroup[]) {
 	}
 }
 
+#ifdef CONSOLECOMMANDS
 void clear_screen() {
 #ifdef _WIN32
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -97,6 +100,7 @@ void clear_screen() {
 	system("clear");
 #endif
 }
+#endif //CONSOLECOMMANDS
 
 void convincer(int votersSize, int votersGroup[], int countConvinces) {
 
@@ -229,6 +233,7 @@ void statisticProvider(int votersSize, int partySize, int votersGroup[]) {
 	std::cout << statisitcMap;
 }
 
+#ifdef CONSOLECOMMANDS
 #ifdef max	//	windows.h library defines a function-like macro with the name of max()
 #define _TEMP_MACRO_ max	//	store the predefined macro in a new one
 #undef max	//	undefine the problamatic macro.
@@ -242,8 +247,8 @@ void pause(const char* prompt) {
 	std::cout << prompt;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
-
 #ifdef _Temp_MACRO_
 #define max _TEMP_MACRO_	// restore the max() macro.
 #undef _TEMP_MACRO_	// undefine the temporary macro.
 #endif
+#endif //CONSOLECOMMANDS
