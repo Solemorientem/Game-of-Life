@@ -221,7 +221,8 @@ void statisticProvider(int votersSize, int partySize, int votersGroup[]) {
 		if (votersPerParty < 100) {
 			spaceFormat += " "; //create spaces so votersPerParty will stay in column
 		}
-		statisitcMap += "Amount of [" + std::to_string(partyCounter) + "] = " + spaceFormat + std::to_string(votersPerParty) + "\n";
+		statisitcMap += "Amount of [" + std::to_string(partyCounter) + "] = " + spaceFormat + 
+				 std::to_string(votersPerParty) + "\n";
 		votersPerParty = 0; //reset to 0
 		spaceFormat = "";	//reset to empty
 	}
